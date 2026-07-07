@@ -1,12 +1,12 @@
+@use 'reset';
 @use 'headband';
 
 :root {
   --font-body: 'Roboto', sans-serif;
-  --font-heading: 'Quicksand', sans-serif;
+  --font-heading: 'Inter', sans-serif;
 }
 
 body {
-  margin: 0;
   font-family: var(--font-body);
 }
 
