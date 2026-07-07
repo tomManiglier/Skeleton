@@ -1,0 +1,8 @@
+homepage:
+    title: 'Bienvenue'
+error:
+    generic: 'Une erreur est survenue.'
+    not_found: 'Page introuvable.'
+    forbidden: 'Accès refusé.'
+headband:
+    test_env: 'Environnement de test'

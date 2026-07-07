@@ -1,0 +1,8 @@
+homepage:
+    title: 'Welcome'
+error:
+    generic: 'Something went wrong.'
+    not_found: 'Page not found.'
+    forbidden: 'Access denied.'
+headband:
+    test_env: 'Test environment'

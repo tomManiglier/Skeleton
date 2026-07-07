@@ -1,0 +1,56 @@
+{
+  "devDependencies": {
+    "@babel/core": "^8.0.0",
+    "@babel/preset-env": "^8.0.0",
+    "@eslint/js": "^10.0.1",
+    "@symfony/webpack-encore": "^7.0.0",
+    "@vitest/eslint-plugin": "^1.6.21",
+    "babel-plugin-polyfill-corejs3": "^1.0.0",
+    "core-js": "^3.49.0",
+    "eslint": "^10.6.0",
+    "jsdom": "^29.1.1",
+    "prettier": "^3.9.4",
+    "regenerator-runtime": "^0.13.9",
+    "sass": "^1.101.0",
+    "sass-loader": "^17.0.0",
+    "stylelint": "^17.14.0",
+    "stylelint-config-standard-scss": "^17.0.0",
+    "ts-loader": "^9.6.2",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.63.0",
+    "vitest": "^4.1.10",
+    "webpack": "^5.82",
+    "webpack-cli": "^7.0.0"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "dev-server": "encore dev-server",
+    "dev": "encore dev",
+    "watch": "encore dev --watch",
+    "build": "encore production --progress",
+    "lint:script": "eslint assets",
+    "lint:script:fix": "eslint assets --fix",
+    "lint:scss": "stylelint assets/styles/**/*.scss",
+    "lint:scss:fix": "stylelint assets/styles/**/*.scss --fix",
+    "prettier": "prettier --check .",
+    "prettier:fix": "prettier --write .",
+    "test:script": "vitest run --passWithNoTests",
+    "typecheck": "tsc --noEmit"
+  },
+  "name": "src",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "directories": {
+    "test": "tests"
+  },
+  "keywords": [],
+  "author": "",
+  "type": "module",
+  "dependencies": {
+    "@fontsource/quicksand": "^5.2.10",
+    "@fontsource/roboto": "^5.2.10",
+    "vanilla-cookieconsent": "^3.1.0"
+  }
+}

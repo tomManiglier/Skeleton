@@ -1,0 +1,25 @@
+/vendor/
+/var/
+/node_modules/
+/public/build/
+
+src/
+templates/
+tests/
+translations/
+config/
+
+*.ts
+*.php
+*.yaml
+*.md
+
+# fichiers gérés par des outils, pas destinés à être reformatés à la main
+composer.json
+composer.lock
+package-lock.json
+symfony.lock
+
+# config JS/TS des outils de build, hors périmètre Prettier
+*.js
+*.mjs

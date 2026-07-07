@@ -1,0 +1,47 @@
+services:
+  web:
+    image: nginx:1.27-alpine
+    ports:
+      - "8081:80"
+    volumes:
+      - ./public:/var/www/public:ro
+      - ./.docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - php-fpm
+
+  php-fpm:
+    build:
+      context: .
+      dockerfile: .docker/php/Dockerfile
+    volumes:
+      - .:/var/www
+    depends_on:
+      - db
+
+  db:
+    image: postgres:18-alpine
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: dev
+    volumes:
+      - db_data:/var/lib/postgresql
+
+  node:
+    build:
+      context: .
+      dockerfile: .docker/node/Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/src
+
+  maildev:
+    image: maildev/maildev
+    ports:
+      - "1085:1080"
+
+volumes:
+  db_data:

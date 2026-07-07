@@ -1,0 +1,5 @@
+consent_modal:
+    title: 'We respect your privacy'
+    description: 'We use cookies to improve your experience.'
+    accept_all: 'Accept all'
+    accept_necessary: 'Necessary only'

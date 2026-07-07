@@ -1,0 +1,15 @@
+{
+    "language": {
+        "default": {{ app.locale|json_encode|raw }},
+        "translations": {
+            {{ app.locale|json_encode|raw }}: {
+                "consentModal": {
+                    "title": {{ ('consent_modal.title'|trans({}, 'cookies'))|json_encode|raw }},
+                    "description": {{ ('consent_modal.description'|trans({}, 'cookies'))|json_encode|raw }},
+                    "acceptAllBtn": {{ ('consent_modal.accept_all'|trans({}, 'cookies'))|json_encode|raw }},
+                    "acceptNecessaryBtn": {{ ('consent_modal.accept_necessary'|trans({}, 'cookies'))|json_encode|raw }}
+                }
+            }
+        }
+    }
+}
