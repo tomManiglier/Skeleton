@@ -78,6 +78,11 @@
   .cm__btn {
     width: 100%;
     margin: 0 !important;
+    border: 0;
+  }
+
+  .cm__btn:nth-child(1) {
+    border-bottom: 1px solid #fff;
   }
   // stylelint-enable selector-class-pattern
 }
