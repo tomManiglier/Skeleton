@@ -18,8 +18,10 @@ Instructions pour les agents de code travaillant sur ce dépôt.
 
 ## Locale
 
-- La locale par défaut et la liste des locales supportées sont centralisées dans `config/services.yaml` (`app.default_locale`) et `src/Locale/SupportedLocales.php` (`SupportedLocales::LIST` / `PATTERN`). Ne pas dupliquer la liste des locales ailleurs (attributs de route, subscriber) : référencer cette classe.
-- L'ordre de résolution de la locale (voir `src/EventSubscriber/LocaleSubscriber.php`) est : locale de route > segment d'URL > `Accept-Language` > `app.default_locale`.
+- La locale par défaut et la liste des locales supportées sont centralisées dans `src/Locale/SupportedLocales.php` (`SupportedLocales::LIST` / `DEFAULT_LOCALE`). `config/services.yaml` référence `SupportedLocales::DEFAULT_LOCALE` via `!php/const` pour le paramètre `app.default_locale`. Ne pas dupliquer la liste des locales ailleurs (attributs de route, subscriber, config de routing) : référencer cette classe.
+- Le préfixe d'URL par locale n'est pas posé route par route : `config/routes.php` importe les contrôleurs une seule fois avec un préfixe calculé par locale (`RoutingConfigurator::prefix()`), vide pour `DEFAULT_LOCALE` et `/{locale}` pour les autres. La locale par défaut (`fr`) n'apparaît donc pas dans l'URL (`/`, `/cookies-consent-config.json`) alors que les autres locales sont préfixées (`/en/`, `/en/cookies-consent-config.json`). Les contrôleurs déclarent des chemins sans `{_locale}`.
+- L'ordre de résolution de la locale (voir `src/EventSubscriber/LocaleSubscriber.php`) est : locale de route > segment d'URL > `Accept-Language` > `app.default_locale`. Le segment d'URL et l'`Accept-Language` ne servent que de filet de sécurité, la locale de route (posée par le préfixe ci-dessus) étant presque toujours déjà résolue quand une requête matche une route.
+- `src/EventSubscriber/HomepageLocaleRedirectSubscriber.php` redirige une seule fois `/` vers la locale préférée du navigateur (`Accept-Language`) si elle diffère de la locale par défaut. Le premier passage est mémorisé via la présence de `_locale` en session (déjà peuplée par `LocaleSubscriber`) : les visites suivantes, ou une navigation explicite vers `/`, ne sont plus redirigées.
 
 ## Qualité
 
