@@ -9,7 +9,7 @@
     {% endblock %}
     {% include 'components/gtm.html.twig' %}
 </head>
-<body>
+<body data-cookie-consent-config-url="{{ path('app_cookie_consent_config') }}">
     {% include 'components/headband.html.twig' %}
 
     {% block body %}{% endblock %}

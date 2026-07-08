@@ -11,7 +11,9 @@ final class HomepageControllerTest extends WebTestCase
     public function testSuccessFR(): void
     {
         $client = static::createClient();
-        $client->request('GET', '/fr/');
+        $client->request('GET', '/', server: [
+            'HTTP_ACCEPT_LANGUAGE' => '',
+        ]);
 
         self::assertResponseIsSuccessful();
     }
