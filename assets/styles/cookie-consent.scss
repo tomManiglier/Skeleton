@@ -54,4 +54,24 @@
     border: 1px solid #fff;
     box-shadow: none;
   }
+
+  .cm {
+    width: 340px !important;
+    max-width: min(340px, calc(100vw - 2rem)) !important;
+  }
+
+  // stylelint-disable selector-class-pattern -- classes imposées par vanilla-cookieconsent (BEM __)
+  .cm__btns {
+    flex-direction: column !important;
+  }
+
+  .cm__btn {
+    width: 100%;
+    margin: 0 !important;
+
+    &:not(:last-child) {
+      margin-bottom: 0.5rem !important;
+    }
+  }
+  // stylelint-enable selector-class-pattern
 }
