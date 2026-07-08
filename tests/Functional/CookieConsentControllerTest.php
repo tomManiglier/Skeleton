@@ -8,10 +8,20 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 final class CookieConsentControllerTest extends WebTestCase
 {
-    public function testReturnsJsonConfig(): void
+    public function testReturnsJsonConfigFR(): void
+    {
+        $this->assertReturnsJsonConfig('/cookies-consent-config.json');
+    }
+
+    public function testReturnsJsonConfigEN(): void
+    {
+        $this->assertReturnsJsonConfig('/en/cookies-consent-config.json');
+    }
+
+    private function assertReturnsJsonConfig(string $path): void
     {
         $client = static::createClient();
-        $client->request('GET', '/fr/cookies-consent-config.json');
+        $client->request('GET', $path);
 
         self::assertResponseIsSuccessful();
         self::assertResponseHeaderSame('Content-Type', 'application/json');

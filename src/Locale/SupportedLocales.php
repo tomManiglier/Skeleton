@@ -8,5 +8,5 @@ final class SupportedLocales
 {
     public const array LIST = ['fr', 'en'];
 
-    public const string PATTERN = 'fr|en';
+    public const string DEFAULT_LOCALE = 'fr';
 }
