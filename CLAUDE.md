@@ -6,6 +6,7 @@ Instructions pour les agents de code travaillant sur ce dépôt.
 
 - Le projet ne s'exécute que via Docker Compose. N'installe jamais de dépendances PHP ou npm en local : passe toujours par `docker compose exec/run`.
 - `make start` et `tests/bootstrap.php` recréent la base de données à chaque exécution. Ne pas s'étonner de perdre des données locales après un `make start` ou un `make test`.
+- `vendor/`, `var/` et `node_modules/` sont montés comme volumes Docker nommés (pas en bind mount) pour éviter la lenteur des bind mounts Windows (plusieurs secondes par requête avec des milliers de fichiers `vendor/`). Conséquence : après un `docker compose down -v` ou une suppression manuelle de ces volumes, il faut relancer `composer install` / `npm install` (déjà fait par `make start`) pour les repeupler.
 
 ## Locale
 
