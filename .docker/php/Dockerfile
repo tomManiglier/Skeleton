@@ -20,4 +20,8 @@ COPY .docker/php/php-custom.ini /usr/local/etc/php/conf.d/php-custom.ini
 
 WORKDIR /var/www
 
+# var/ est monté comme volume nommé (perf) : www-data doit pouvoir y écrire
+# (cache, logs) dès la première création du volume, qui copie ce contenu.
+RUN mkdir -p var/cache var/log && chown -R www-data:www-data var
+
 CMD ["php-fpm"]
