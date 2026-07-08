@@ -15,5 +15,18 @@ final class CookieConsentControllerTest extends WebTestCase
 
         self::assertResponseIsSuccessful();
         self::assertResponseHeaderSame('Content-Type', 'application/json');
+
+        $content = $client->getResponse()
+            ->getContent();
+        self::assertIsString($content);
+
+        $config = json_decode($content, true);
+        self::assertIsArray($config);
+        self::assertArrayHasKey('categories', $config);
+
+        $categories = $config['categories'];
+        self::assertIsArray($categories);
+        self::assertArrayHasKey('necessary', $categories);
+        self::assertArrayHasKey('analytics', $categories);
     }
 }

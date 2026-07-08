@@ -1,0 +1,88 @@
+// Thème brut (noir/blanc) du bandeau vanilla-cookieconsent
+// Référence des variables : node_modules/vanilla-cookieconsent/dist/cookieconsent.css
+
+:root {
+  --cc-bg: #000;
+  --cc-primary-color: #fff;
+  --cc-secondary-color: #fff;
+  --cc-btn-primary-bg: #000;
+  --cc-btn-primary-color: #fff;
+  --cc-btn-primary-border-color: #fff;
+  --cc-btn-primary-hover-bg: #fff;
+  --cc-btn-primary-hover-color: #000;
+  --cc-btn-primary-hover-border-color: #fff;
+  --cc-btn-secondary-bg: #000;
+  --cc-btn-secondary-color: #fff;
+  --cc-btn-secondary-border-color: #fff;
+  --cc-btn-secondary-hover-bg: #fff;
+  --cc-btn-secondary-hover-color: #000;
+  --cc-btn-secondary-hover-border-color: #fff;
+  --cc-separator-border-color: #fff;
+  --cc-link-color: #fff;
+  --cc-cookie-category-block-bg: #000;
+  --cc-cookie-category-block-border: #fff;
+  --cc-cookie-category-block-hover-bg: #000;
+  --cc-cookie-category-block-hover-border: #fff;
+  --cc-cookie-category-expanded-block-bg: #000;
+  --cc-cookie-category-expanded-block-hover-bg: #000;
+  --cc-section-category-border: #fff;
+  --cc-toggle-on-bg: #fff;
+  --cc-toggle-off-bg: #000;
+  --cc-toggle-on-knob-bg: #000;
+  --cc-toggle-off-knob-bg: #fff;
+  --cc-toggle-readonly-bg: #fff;
+  --cc-toggle-readonly-knob-bg: #000;
+  --cc-toggle-enabled-icon-color: #000;
+  --cc-toggle-disabled-icon-color: #fff;
+  --cc-toggle-readonly-knob-icon-color: #fff;
+  --cc-footer-bg: #000;
+  --cc-footer-color: #fff;
+  --cc-footer-border-color: #fff;
+  --cc-overlay-bg: rgb(0 0 0 / 70%);
+  --cc-modal-border-radius: 0;
+  --cc-btn-border-radius: 0;
+  --cc-pm-toggle-border-radius: 0;
+}
+
+// Le fond/rayon passent par les variables ci-dessus, mais la bordure et
+// l'ombre du bandeau lui-même ne sont pas exposées en variable CSS par la
+// librairie : on les surcharge directement, avec #cc-main pour rester au
+// moins aussi spécifique que ses propres règles.
+#cc-main {
+  .cm,
+  .pm {
+    border: 1px solid #fff;
+    box-shadow: none;
+  }
+
+  .cm {
+    width: 340px !important;
+    max-width: min(340px, calc(100vw - 2rem)) !important;
+  }
+
+  // stylelint-disable selector-class-pattern -- classes imposées par vanilla-cookieconsent (BEM __)
+  .cm__btns {
+    flex-direction: column !important;
+    padding: 0 !important;
+  }
+
+  .cm__btn-group {
+    width: 100%;
+    margin: 0 !important;
+
+    &:not(:last-child) {
+      margin-bottom: 0.5rem !important;
+    }
+  }
+
+  .cm__btn {
+    width: 100%;
+    margin: 0 !important;
+    border: 0;
+  }
+
+  .cm__btn:nth-child(1) {
+    border-bottom: 1px solid #fff;
+  }
+  // stylelint-enable selector-class-pattern
+}
